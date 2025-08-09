@@ -19,9 +19,9 @@ app.post('/api/contact', limiter, async (req, res) => {
   const { fullName, email, phone, message } = req.body
 
   if (
-    fullName.length > 40 ||
+    fullName.length > 20 ||
     email.length > 40 ||
-    phone.length > 20 ||
+    phone.length > 50 ||
     message.length > 1000
   ) {
     return res.status(400).json({ error: 'Input too long' })
@@ -32,7 +32,7 @@ app.post('/api/contact', limiter, async (req, res) => {
     'utf8'
   )
 
-  if (messageSize > 1000) {
+  if (messageSize > 2000) {
     return res.status(400).json({ error: 'Message too large' })
   }
 
